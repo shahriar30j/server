@@ -1,9 +1,9 @@
 const fs = require('fs');
 
-
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
+
     if (url === '/') {
         res.write('<html>');
         res.write('<head><title>Enter Message</title></head>');
@@ -38,7 +38,18 @@ const server = http.createServer((req, res) => {
     res.write('<body><h1> Hello from my Node.js Server!</h1></body>');
     res.write('</html>');
     res.end();
-});
+};
 
 
-server.listen(3000);  
+// module.exports = requestHandler;
+
+// module.exports = {
+//     handler: requestHandler,
+//     someText: 'This is Hard Coded Text'
+// }
+
+module.exports.handler = requestHandler;
+exports.someText = 'This is a Hard Coded Text';
+
+
+// module.exports.someText = 'This is a Hard Coded Text';
