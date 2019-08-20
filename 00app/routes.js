@@ -21,7 +21,7 @@ const requestHandler = (req, res) => {
         });
         return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
-            console.log(parsedBody);
+            newFunction(parsedBody);
             const message = parsedBody.split('=')[1];
             fs.writeFile('message.txt', message, err => {
 
@@ -52,4 +52,8 @@ module.exports.handler = requestHandler;
 exports.someText = 'This is a Hard Coded Text';
 
 
+
+function newFunction(parsedBody) {
+    console.log(parsedBody);
+}
 // module.exports.someText = 'This is a Hard Coded Text';
