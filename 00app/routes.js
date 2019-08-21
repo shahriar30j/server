@@ -56,4 +56,4 @@ exports.someText = 'This is a Hard Coded Text';
 function newFunction(parsedBody) {
     console.log(parsedBody);
 }
-// module.exports.someText = 'This is a Hard Coded Text';
+module.exports.someText = 'This is a Hard Coded Text';
