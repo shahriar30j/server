@@ -9,28 +9,27 @@ const pth = path.join(
     'products.json'
 );
 
-const getProductsFromFile = (cb) => {
-    
+const getProductsFromFile = cb => {
+
     fs.readFile(pth, (err, fileContent) => {
         if (err) {
             return cb([]);
         } else {
             cb(JSON.parse(fileContent));
-        }
+        }  
     });
 };
 
 module.exports = class Product {
-    constructor(ttl) {
-        this.title = ttl;
+    constructor(title, imageUrl, description, price) {
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.price = price;
     }
+
     save() {
-        // products.push(this);
-        // const pth = path.join(
-        //     path.dirname(process.mainModule.filename),
-        //     'data',
-        //     'products.json'
-        // );
+
         getProductsFromFile(products => {
             products.push(this);
             fs.writeFile(pth, JSON.stringify(products), (err) => {
